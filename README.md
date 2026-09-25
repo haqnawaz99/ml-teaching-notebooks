@@ -8,12 +8,12 @@ A collection of end-to-end, step-by-step machine learning notebooks for students
 
 Predicts whether a passenger survived the Titanic disaster from PClass, Gender, Sibling count, and Embarked port, using a Support Vector Classifier.
 
-Two versions are included:
+All files live in one folder, [`1 - Titanic Survival Prediction`](./1%20-%20Titanic%20Survival%20Prediction), since they share the same dataset, trained model, and `requirements.txt`. Two notebooks are included inside it:
 
-| Folder | Description |
+| Notebook | Description |
 |---|---|
-| [`1a - Titanic Survival - Recommended Update`](./1a%20-%20Titanic%20Survival%20-%20Recommended%20Update) | The original notebook with fixes: proper evaluation metrics (precision/recall/F1/confusion matrix) and a filled-in feedback section. Minimal changes, same modeling approach. |
-| [`1b - Titanic Survival - Full Enhancement`](./1b%20-%20Titanic%20Survival%20-%20Full%20Enhancement) | Everything in 1a, plus a data visualization step (survival rate by Gender/PClass) and a model comparison step (SVC vs. Logistic Regression vs. Decision Tree). |
+| `Titanic_Passenger_Survival_Recommended.ipynb` | The original notebook with fixes: proper evaluation metrics (precision/recall/F1/confusion matrix) and a filled-in feedback section. Minimal changes, same modeling approach. |
+| `Titanic_Passenger_Survival_FullEnhancement.ipynb` | Everything in the Recommended notebook, plus a data visualization step (survival rate by Gender/PClass) and a model comparison step (SVC vs. Logistic Regression vs. Decision Tree). |
 
 Both achieve **0.80 accuracy** on the held-out test set and run top-to-bottom with zero errors.
 
@@ -21,9 +21,9 @@ Both achieve **0.80 accuracy** on the held-out test set and run top-to-bottom wi
 
 A live demo of the Titanic survival predictor is deployed on Streamlit Community Cloud — students can try it directly in a browser, no Python or Jupyter install needed:
 
-**[Titanic Survival Predictor — Live App](#)** *(link added after first deploy — see `streamlit-app/README.md` for deployment steps)*
+**[Titanic Survival Predictor — Live App](https://ml-teaching-notebooks-jrrdwercxskw5kwc6rufvp.streamlit.app/)**
 
-The app code lives in [`streamlit-app/`](./streamlit-app) and uses the trained model from the `1a` notebook.
+The app code lives in [`streamlit-app/`](./streamlit-app) and uses the trained model from the Recommended notebook.
 
 ## Getting Started (each project folder)
 
