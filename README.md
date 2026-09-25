@@ -17,6 +17,14 @@ Two versions are included:
 
 Both achieve **0.80 accuracy** on the held-out test set and run top-to-bottom with zero errors.
 
+## Try It Online (No Setup Required)
+
+A live demo of the Titanic survival predictor is deployed on Streamlit Community Cloud — students can try it directly in a browser, no Python or Jupyter install needed:
+
+**[Titanic Survival Predictor — Live App](#)** *(link added after first deploy — see `streamlit-app/README.md` for deployment steps)*
+
+The app code lives in [`streamlit-app/`](./streamlit-app) and uses the trained model from the `1a` notebook.
+
 ## Getting Started (each project folder)
 
 Every project folder is self-contained with its own `requirements.txt`. From inside a project folder:
