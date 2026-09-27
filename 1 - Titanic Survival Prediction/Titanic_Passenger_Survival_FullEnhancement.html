@@ -13357,6 +13357,16 @@ Discover the Titanic Passenger Survival Prediction System, a machine learning mo
 <li>Step 9.3: Improve the Model Based on Feedback</li>
 </ul>
 </li>
+<li><strong>Step 10: Deploy Your Model as a Public Web App (NEW)</strong><ul>
+<li>Step 10.1: Why Deploy a Model?</li>
+<li>Step 10.2: Create a GitHub Account and Repository</li>
+<li>Step 10.3: Write a Simple Web App</li>
+<li>Step 10.4: Create a Streamlit Community Cloud Account</li>
+<li>Step 10.5: Deploy Your App</li>
+<li>Step 10.6: Troubleshooting Common Issues</li>
+<li>Step 10.7: Share Your Live Link</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
@@ -15617,6 +15627,66 @@ Domain Expert (History)                        Third class, male, Southampton -&
 </pre>
 </div>
 </div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered" id="cell-id=3c20bbc3"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h2 id="Step-10:-Deploy-Your-Model-as-a-Public-Web-App-(NEW)">Step 10: Deploy Your Model as a Public Web App (NEW)<a class="anchor-link" href="#Step-10:-Deploy-Your-Model-as-a-Public-Web-App-(NEW)">¶</a></h2><p>So far, running this notebook only lets <em>you</em> use the model, and only while Jupyter is open on your own computer. This section shows how to turn it into a <strong>live website</strong> anyone can open in a browser - no Python, no Jupyter, nothing installed on their end. This is the same process used to deploy the live demo for this project.</p>
+<h4 id="Step-10.1:-Why-Deploy-a-Model?">Step 10.1: Why Deploy a Model?<a class="anchor-link" href="#Step-10.1:-Why-Deploy-a-Model?">¶</a></h4><p>A trained model is only useful if people other than you can access it. Deploying it as a small web app is how data scientists share results with non-technical stakeholders (teachers, classmates, clients) who won't run a notebook themselves.</p>
+<h4 id="Step-10.2:-Create-a-GitHub-Account-and-Repository">Step 10.2: Create a GitHub Account and Repository<a class="anchor-link" href="#Step-10.2:-Create-a-GitHub-Account-and-Repository">¶</a></h4><ol>
+<li>If you don't have one, sign up for a free account at **<a href="https://github.com**">https://github.com**</a>.</li>
+<li>Create a new repository (click the <strong>+</strong> icon top-right -&gt; <strong>New repository</strong>). Give it a name (e.g. <code>my-titanic-app</code>), keep it <strong>Public</strong>, and click <strong>Create repository</strong>.</li>
+<li>Upload your notebook's folder to this repository. The easiest way from a browser: open your new repo -&gt; <strong>Add file -&gt; Upload files</strong> -&gt; drag in your project folder's contents (at minimum you need <code>app.py</code>, <code>requirements.txt</code>, and your trained <code>.pkl</code> model file - see Step 10.3).<ul>
+<li>Alternatively, if you're comfortable with git on the command line:<pre><code>git init
+git add .
+git commit -m "Initial commit"
+git branch -M main
+git remote add origin https://github.com/&lt;your-username&gt;/my-titanic-app.git
+git push -u origin main
+</code></pre>
+</li>
+</ul>
+</li>
+</ol>
+<h4 id="Step-10.3:-Write-a-Simple-Web-App">Step 10.3: Write a Simple Web App<a class="anchor-link" href="#Step-10.3:-Write-a-Simple-Web-App">¶</a></h4><p>You need a small Python script that loads your saved model and lets a user enter inputs through a web form. <strong>Streamlit</strong> is a beginner-friendly library for this - it turns a plain Python script into a web app with almost no HTML/CSS needed.</p>
+<p>A complete, working example is already included in this repository at <code>streamlit-app/app.py</code> - you can copy it directly and adapt the input fields to your own project. At minimum, your <code>app.py</code> needs to:</p>
+<ol>
+<li>Load your trained model with <code>pickle.load(...)</code>.</li>
+<li>Recreate any <code>LabelEncoder</code>s the same way the notebook did (fit on the same fixed category lists), or load pickled encoders if you saved them separately.</li>
+<li>Use Streamlit widgets (<code>st.selectbox</code>, <code>st.number_input</code>, etc.) to collect input from the user.</li>
+<li>Call <code>model.predict(...)</code> on a button click and display the result with <code>st.success(...)</code> / <code>st.error(...)</code>.</li>
+</ol>
+<p>You also need a <code>requirements.txt</code> in the <strong>same folder</strong> as <code>app.py</code>, listing the packages your app needs, for example:</p>
+<pre><code>streamlit
+scikit-learn
+pandas
+numpy
+</code></pre>
+<h4 id="Step-10.4:-Create-a-Streamlit-Community-Cloud-Account">Step 10.4: Create a Streamlit Community Cloud Account<a class="anchor-link" href="#Step-10.4:-Create-a-Streamlit-Community-Cloud-Account">¶</a></h4><ol>
+<li>Go to **<a href="https://share.streamlit.io**">https://share.streamlit.io**</a>.</li>
+<li>Click <strong>Sign up</strong> / <strong>Sign in with GitHub</strong> and authorize Streamlit to access your GitHub repositories. This is free for public apps.</li>
+</ol>
+<h4 id="Step-10.5:-Deploy-Your-App">Step 10.5: Deploy Your App<a class="anchor-link" href="#Step-10.5:-Deploy-Your-App">¶</a></h4><ol>
+<li>On the Streamlit Cloud dashboard, click <strong>Create app</strong> -&gt; <strong>Deploy a public app from GitHub</strong>.</li>
+<li>Fill in:<ul>
+<li><strong>Repository:</strong> <code>&lt;your-username&gt;/my-titanic-app</code></li>
+<li><strong>Branch:</strong> <code>main</code></li>
+<li><strong>Main file path:</strong> <code>app.py</code> (or <code>streamlit-app/app.py</code> if it's inside a subfolder, like in this repo)</li>
+</ul>
+</li>
+<li>Click <strong>Deploy</strong>. The first deploy takes a minute or two while it installs your <code>requirements.txt</code>.</li>
+<li>You'll get a public URL like <code>https://&lt;something&gt;.streamlit.app</code> - this is your live app. Share it with anyone!</li>
+</ol>
+<h4 id="Step-10.6:-Troubleshooting-Common-Issues">Step 10.6: Troubleshooting Common Issues<a class="anchor-link" href="#Step-10.6:-Troubleshooting-Common-Issues">¶</a></h4><p>These are real issues encountered while deploying this project's own demo app - check here first if your app fails:</p>
+<ul>
+<li><strong><code>ModuleNotFoundError</code> for a package that's clearly in <code>requirements.txt</code>:</strong> This usually means the deployment's default Python version doesn't have a prebuilt package ("wheel") for one of your pinned versions (this happened here when Streamlit Cloud defaulted to a very new Python 3.14, which didn't yet have scikit-learn wheels available). <strong>Fix:</strong> open your app's <strong>Settings -&gt; General -&gt; Python version</strong> in the Streamlit Cloud dashboard, and pick a stable version like <strong>3.11</strong> or <strong>3.12</strong>, then save (it will reboot automatically).</li>
+<li><strong>App stuck on "Your app is in the oven" for a very long time:</strong> This usually means it's stuck retrying after a crash, not still building normally (a normal build finishes in a few minutes). <strong>Fix:</strong> open the app, click <strong>Manage app</strong> (bottom-right) to see the live build log, check for red error lines, fix the underlying <code>requirements.txt</code>/Python version issue, then use the reboot option in that same log panel.</li>
+<li><strong><code>requirements.txt</code> seems to be ignored:</strong> Make sure it's in the exact same folder as your main app file (<code>app.py</code>), not just somewhere in the repo.</li>
+</ul>
+<h4 id="Step-10.7:-Share-Your-Live-Link">Step 10.7: Share Your Live Link<a class="anchor-link" href="#Step-10.7:-Share-Your-Live-Link">¶</a></h4><p>Once deployed, add the link to your notebook, your GitHub repo's <code>README.md</code>, or send it directly to whoever you want to try your model - they just click and use it, with nothing to install.</p>
+<hr/>
 </div>
 </div>
 </div>
