@@ -1,6 +1,6 @@
 # Titanic Survival Predictor — Streamlit App
 
-A small web app for students to try the trained Titanic survival model in a browser, with no install required. Built from the model trained in [`1a - Titanic Survival - Recommended Update`](../1a%20-%20Titanic%20Survival%20-%20Recommended%20Update).
+A small web app for students to try the trained Titanic survival model in a browser, with no install required. Built from the model trained in [`1 - Titanic Survival Prediction`](../1%20-%20Titanic%20Survival%20Prediction) (the `Titanic_Passenger_Survival_Recommended.ipynb` notebook).
 
 ## Deploying to Streamlit Community Cloud (free)
 
