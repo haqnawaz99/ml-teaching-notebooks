@@ -7,3 +7,10 @@ __pycache__/
 
 # Car price models are created when the notebooks run (the full-dataset one is ~60 MB)
 3 - Car Price Prediction K-Fold Cross Validation/*.pkl
+
+# Emotion models, vectorizers and cleaned CSVs are created when the notebooks run
+5 - English Emotion Analysis - Binary Classification/*.pkl
+5 - English Emotion Analysis - Binary Classification/trained_models/
+5 - English Emotion Analysis - Binary Classification/clean_*.csv
+6 - English Emotion Analysis - Multi-class Classification/*.pkl
+6 - English Emotion Analysis - Multi-class Classification/clean_*.csv
